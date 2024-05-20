@@ -32,7 +32,7 @@
                 <input type="color" id="color-picker" oninput="clickColor(false)" value="#ff0000">
             </div>
             <div class="editor" id="d4">
-                <div class="viewer" id="view"></div>
+                <div class="viewer" id="view" style="margin-bottom: 10px;"></div>
                 <input type="range" min="0" max="100" value="50" id="slider"
                     oninput="updateAlpha(this)">
             </div>
@@ -60,7 +60,8 @@
                 colorValue.innerHTML = colorPicker.value + "<br/>" + rgb;
                 if (!fixView || changeView) {
                     var rgb = hexToRgb(colorPicker.value);
-                    var rgba = rgb.replace("rgb", "rgba").replace(")", "," + alpha + ")");
+                    var rgba = rgb.replace("rgb", "rgba").replace(")", 
+                        "," + alpha + ")");
                     console.log(rgba);
                     viewer.style.backgroundColor = rgba;
                     colorInput.placeholder = rgba;
@@ -84,7 +85,7 @@
 
             // RGB转HEX
             function rgbToHex(rgb) {
-                rgb = rgb.replace("rgb(", "").replace(")", "").split(",").map(a => parseInt(a));
+                rgb = rgb.replace("rgb(", "").replace(")", "").split(",").map(parseInt);
                 const toHex = (colorValue) => {
                     var hex = colorValue.toString(16);
                     return hex.length == 1 ? "0" + hex : hex;
