@@ -20,7 +20,7 @@
 
         <img src="Lake.jpg" id="fullscreen">
           
-        <div class="box-container" style="height: 5vh; padding-top: 10vh;">
+        <div class="box-container" style="height: 5vh; padding: 10vh 0 2vh 0;">
             <div class="box pad-left" id="d1">
                 <div id="color-hint">Color Picker</div>
             </div>
@@ -28,12 +28,12 @@
                 <input id="color-input" type="text" oninput="setColor(event)" title="输入 rgb(r,g,b) 或 #rrggbb" placeholder="rgb(rgb) or #rrggbb">
             </div>
         </div>
-        <div class="box-container" style="height: 55vh">
+        <div class="box-container" style="height: 50vh">
             <div class="box pad-left" id="d3">
                 <input type="color" id="color-picker" oninput="clickColor(false)" value="#102a47">
             </div>
             <div class="box pad-right" id="d4">
-                <div class="viewer" id="view" style="margin-bottom: 10px;"></div>
+                <div class="viewer" id="view" style="margin-bottom: 15px;"></div>
                 <input type="range" min="0" max="100" value="50" id="slider"
                     oninput="updateAlpha(this)">
             </div>
@@ -42,7 +42,7 @@
             <div class="box pad-left" id="d5">
                 <div id="color-value">color-value</div>
             </div>
-            <div class="box pad-right" id="d6" style="margin-top: 2rem">
+            <div class="box pad-right" id="d6" style="margin-top: 2.5rem">
                 <label title="固定颜色" class="check-box">
                     <input type="checkbox" id="check-fix" onclick="checkFix(this)">&nbsp;fix</label>
             </div>

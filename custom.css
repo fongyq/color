@@ -41,7 +41,7 @@ h3 {
 
 .content {
     padding-top: 5px;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
@@ -74,7 +74,7 @@ h3 {
     margin: 0 auto;
     width: 25vw;
     height: 25vw;
-    border: 2px solid #6d0404;
+    border: 2px solid #053d6e;
     border-radius: 50%;
     text-align: center;
     margin-bottom: 20px;
@@ -115,9 +115,9 @@ input[type="color"] {
 }
 
 input[type="text"] {
-    width: 30rem;
+    width: 26rem;
     height: 3rem;
-    border: 2px solid white;
+    border: 1px solid white;
     border-radius: 5px;
     text-align: center;
     font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
