@@ -1,5 +1,5 @@
 body {
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 0;
@@ -90,7 +90,7 @@ input[type="checkbox"] {
 .check-box {
     text-align: center;
     width: 8rem;
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 2rem;
     font-weight: bold;
     color: white;
@@ -120,7 +120,7 @@ input[type="text"] {
     border: 2px solid white;
     border-radius: 5px;
     text-align: center;
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 2rem;
     background-color: transparent;
     color: rgb(231,117,24);
@@ -147,13 +147,13 @@ input:ms-input-placeholder {
 }
 
 #color-value {
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 2rem;
     line-height: 3rem;
     color: white;
 }
 #color-hint {
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 2rem;
     line-height: 3rem;
     color: white;
