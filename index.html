@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>json-viewer</title>
+
+        <link rel="icon" href="./magnum.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+        
+        <link rel="stylesheet" href="./custom.css"/>
+        
+    </head>
+    <body>
+
+        <div class="popup" id="popup-info"></div>
+
+        <div class="editor-container" style="height: 5vh; padding-top: 10vh;">
+            <div class="editor" id="d1">
+                <div id="color-hint">Color Picker</div>
+            </div>
+            <div class="editor" id="d2">
+                <input id="color-input" type="text" oninput="setColor(event)" placeholder="rgb(rgb) or #rrggbb">
+            </div>
+        </div>
+        <div class="editor-container" style="height: 55vh">
+            <div class="editor" id="d3">
+                <input type="color" id="color-picker" oninput="clickColor(false)" value="#ff0000">
+            </div>
+            <div class="editor" id="d4">
+                <div class="viewer" id="view"></div>
+                <input type="range" min="0" max="100" value="50" id="slider"
+                    oninput="updateAlpha(this)">
+            </div>
+        </div>
+        <div class="editor-container" style="height: 5vh;">
+            <div class="editor" id="d5">
+                <div id="color-value">color-value</div>
+            </div>
+            <div class="editor" id="d6">
+                <label title="固定颜色" class="check-box">
+                    <input type="checkbox" id="check-fix" onclick="checkFix(this)">fix</label>
+            </div>
+        </div>
+        
+        <script>
+            var viewer = document.getElementById("view");
+            var colorPicker = document.getElementById("color-picker");
+            var colorInput = document.getElementById("color-input");
+            var alpha = 0.5;
+            var fixView = false;
+
+            function clickColor(changeView) {
+                var colorValue = document.getElementById("color-value");
+                var rgb = hexToRgb(colorPicker.value);
+                colorValue.innerHTML = colorPicker.value + "<br/>" + rgb;
+                if (!fixView || changeView) {
+                    var rgb = hexToRgb(colorPicker.value);
+                    var rgba = rgb.replace("rgb", "rgba").replace(")", "," + alpha + ")");
+                    console.log(rgba);
+                    viewer.style.backgroundColor = rgba;
+                    colorInput.placeholder = rgba;
+                }
+            }
+
+            function setColor(event) {
+                if (colorInput.value.startsWith('rgb')) {
+                    color = rgbToHex(colorInput.value);
+                } else {
+                    color = colorInput.value;
+                }
+                colorPicker.value = color;
+                clickColor(true);
+            }
+
+            function updateAlpha(p) {
+                alpha = parseInt(p.value) / 100;
+                clickColor(true);
+            }
+
+            // RGB转HEX
+            function rgbToHex(rgb) {
+                rgb = rgb.replace("rgb(", "").replace(")", "").split(",").map(a => parseInt(a));
+                const toHex = (colorValue) => {
+                    var hex = colorValue.toString(16);
+                    return hex.length == 1 ? "0" + hex : hex;
+                };
+                return "#" + toHex(rgb[0]) + toHex(rgb[1]) + toHex(rgb[2]);
+            }
+            
+            // HEX转RGB
+            function hexToRgb(hex) {
+                var rgb = "rgb(" + 
+                    parseInt(hex.slice(1, 3), 16) + "," +
+                    parseInt(hex.slice(3, 5), 16) + "," +
+                    parseInt(hex.slice(5, 7), 16) + ")";
+                return rgb;
+            }
+
+            function checkFix(obj) {
+                if (obj.checked) {
+                    fixView = true;
+                } else {
+                    fixView = false;
+                }
+            }
+
+            clickColor(true);
+        </script>
+    </body>
+</html>
