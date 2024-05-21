@@ -78,6 +78,7 @@ h3 {
     border-radius: 50%;
     text-align: center;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 label:hover {
