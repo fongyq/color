@@ -73,7 +73,7 @@
                 try {
                     var color = await ed.open();
                     colorPicker.value = color.sRGBHex;
-                    clickColor(true);
+                    clickColor(false);
                 } catch (e) {
                     console.log(e);
                 }
