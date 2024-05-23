@@ -72,7 +72,7 @@
             async function pickColor() {
                 try {
                     var color = await ed.open();
-                    colorPicker.value = color;
+                    colorPicker.value = color.sRGBHex;
                     clickColor(true);
                 } catch (e) {
                     console.log(e);
