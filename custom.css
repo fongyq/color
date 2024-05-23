@@ -148,12 +148,7 @@ input:ms-input-placeholder {
     color: white;
 }
 
-#color-value {
-    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
-    font-size: 2rem;
-    line-height: 3rem;
-    color: white;
-}
+
 #color-hint {
     font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 2rem;
@@ -171,4 +166,36 @@ button {
 }
 button:hover {
     cursor: pointer;
+}
+
+.color-value {
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: white;
+}
+
+.color-value-container {
+    position: relative;
+    color: white;
+    border: none;
+}
+
+.copyBtn {
+    display: block;
+    opacity: 0.5;
+    position: absolute;
+    top: 0.5rem;
+    right: 3rem;
+}
+.copyBtn:hover {
+    cursor: pointer;
+}
+
+.copyCheck {
+    display: none;
+    opacity: 0.5;
+    position: absolute;
+    top: 0.5rem;
+    right: 3rem;
 }

@@ -42,10 +42,19 @@
             </div>
         </div>
         <div class="box-container">
-            <div class="box pad-left" id="d5" style="margin-top: 1rem">
-                <div id="color-value"></div>
+            <div class="box pad-left" id="d5">
+                <div class="color-value-container">
+                    <i class="fa-solid fa-copy fa-2x copyBtn" data-clipboard-target="#hex" id="copyButton1"></i>
+                    <i class="fa-solid fa-check fa-2x copyCheck" id="copyCheck1"></i>
+                    <i class="color-value" id="hex"></i>
+                </div>
+                <div class="color-value-container">
+                    <i class="fa-solid fa-copy fa-2x copyBtn" data-clipboard-target="#rgb" id="copyButton2"></i>
+                    <i class="fa-solid fa-check fa-2x copyCheck" id="copyCheck2"></i>
+                    <i class="color-value" id="rgb"></i>
+                </div>
             </div>
-            <div class="box pad-right" id="d6" style="margin-top: 3.5rem">
+            <div class="box pad-right" id="d6" style="margin-top: 2.5rem">
                 <label title="固定颜色" class="check-box">
                     <input type="checkbox" id="check-fix" onclick="checkFix(this)">&nbsp;Lock</label>
             </div>
@@ -59,6 +68,7 @@
             var colorInput = document.getElementById("color-input");
             var alpha = 0.5;
             var fixView = false;
+            var clipboard = new ClipboardJS('.copyBtn');
 
             const hasED = () => ('EyeDropper' in window);
             var ed;
@@ -80,9 +90,11 @@
             }
 
             function clickColor(changeView) {
-                var colorValue = document.getElementById("color-value");
+                var colorRGB = document.getElementById("rgb");
+                var colorHex = document.getElementById("hex");
                 var rgb = hexToRgb(colorPicker.value);
-                colorValue.innerHTML = colorPicker.value + "<br/>" + rgb;
+                colorRGB.innerHTML = colorPicker.value;
+                colorHex.innerHTML = rgb;
                 if (!fixView || changeView) {
                     var rgb = hexToRgb(colorPicker.value);
                     var rgba = rgb.replace("rgb", "rgba").replace(")", 
@@ -140,6 +152,29 @@
                     colorInput.value = "";
                 }
             }
+
+            clipboard.on('success', function(event) {
+                event.clearSelection();
+                var copyBtn = event.trigger.id;
+                if (copyBtn === "copyButton1") {
+                    document.getElementById("copyButton1").style.display = "none";
+                    document.getElementById("copyCheck1").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("copyButton1").style.display = "block";
+                        document.getElementById("copyCheck1").style.display = "none";
+                    }, 1000);
+                } else {
+                    document.getElementById("copyButton2").style.display = "none";
+                    document.getElementById("copyCheck2").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("copyButton2").style.display = "block";
+                        document.getElementById("copyCheck2").style.display = "none";
+                    }, 1000);
+                }
+            });
+            clipboard.on('error', function(event) {
+                console.log('复制失败 ' + event.action);
+            });
 
             clickColor(true);
         </script>
