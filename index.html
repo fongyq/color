@@ -20,9 +20,12 @@
 
         <img src="Lake.jpg" id="fullscreen">
           
-        <div class="box-container" style="height: 5vh; padding: 10vh 0 2vh 0;">
+        <div class="box-container" style="height: 20vh">
             <div class="box pad-left" id="d1">
-                <div id="color-hint">ColorPicker</div>
+                <div>
+                    <p  id="color-hint">ColorPicker</p>
+                    <button id="eyedropper" class="fa-solid fa-eye-dropper fa-4x" onclick="pickColor()" title="拾色器"></button>
+                </div>
             </div>
             <div class="box pad-right" id="d2">
                 <input id="color-input" type="text" oninput="setColor(event)" title="输入 rgb(r,g,b) 或 #rrggbb" placeholder="rgb(rgb) or #rrggbb">
@@ -33,7 +36,7 @@
                 <input type="color" id="color-picker" oninput="clickColor(false)" value="#102a47">
             </div>
             <div class="box pad-right" id="d4">
-                <div class="viewer" id="view" style="margin-bottom: 15px;" ondblclick="clearInput(event)"></div>
+                <div class="viewer" id="view" ondblclick="clearInput(event)"></div>
                 <input type="range" min="0" max="100" value="50" id="slider"
                     oninput="updateAlpha(this)" title="alpha 透明度">
             </div>
@@ -56,6 +59,25 @@
             var colorInput = document.getElementById("color-input");
             var alpha = 0.5;
             var fixView = false;
+
+            const hasED = () => ('EyeDropper' in window);
+            var ed;
+            try {
+                ed = new window.EyeDropper();
+            } catch {
+                ed = null;
+                console.log("EyeDropper not supported.");
+            }
+
+            async function pickColor() {
+                try {
+                    var color = await ed.open();
+                    colorPicker.value = color;
+                    clickColor(true);
+                } catch (e) {
+                    console.log(e);
+                }
+            }
 
             function clickColor(changeView) {
                 var colorValue = document.getElementById("color-value");
