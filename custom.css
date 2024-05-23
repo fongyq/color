@@ -160,9 +160,9 @@ button {
     background-color: transparent;
     color: white;
     border: 2px solid white;
-    border-radius: 10px;
-    width: 80px;
-    height: 80px;
+    border-radius: 20px;
+    width: 90px;
+    height: 90px;
 }
 button:hover {
     cursor: pointer;
