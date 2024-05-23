@@ -95,7 +95,7 @@ input[type="checkbox"] {
     font-size: 2rem;
     font-weight: bold;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 2px solid white;
     padding: 0.5rem 1rem;
     display: inline-flex;
