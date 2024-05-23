@@ -60,7 +60,7 @@ h3 {
     border: none;
     border-radius: 5px;
     text-align: center;
-    align-items: center;
+    align-content: center;
 }
 
 .pad-left {
