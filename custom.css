@@ -60,6 +60,7 @@ h3 {
     border: none;
     border-radius: 5px;
     text-align: center;
+    align-items: center;
 }
 
 .pad-left {
@@ -159,4 +160,16 @@ input:ms-input-placeholder {
     font-size: 2rem;
     line-height: 3rem;
     color: white;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+}
+button:hover {
+    cursor: pointer;
 }
