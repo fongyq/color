@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+        <script type="text/javascript" src="https://chir.ag/projects/ntc/ntc.js"></script>
         
         <link rel="stylesheet" href="./custom.css"/>
         
@@ -42,7 +44,8 @@
             </div>
         </div>
         <div class="box-container">
-            <div class="box pad-left" id="d5" style="margin-top: 0.5rem">
+            <div class="box pad-left" id="d5" style="margin-top: 0.3rem">
+                <div class="color-value" id="color-name"></div>
                 <div class="color-value-container" id="cv1">
                     <i class="fa-solid fa-copy fa-2x copyBtn" data-clipboard-target="#hex" id="copyButton1"></i>
                     <i class="fa-solid fa-check fa-2x copyCheck" id="copyCheck1"></i>
@@ -89,17 +92,23 @@
                 }
             }
 
+            function getColorName(hex) {
+                var n_match = ntc.name(hex);
+                return n_match[1];
+            }
+
             function clickColor(changeView) {
+                var colorName = document.getElementById("color-name");
                 var colorRGB = document.getElementById("rgb");
                 var colorHex = document.getElementById("hex");
-                var rgb = hexToRgb(colorPicker.value);
-                colorRGB.innerHTML = colorPicker.value;
-                colorHex.innerHTML = rgb;
+                var hex = colorPicker.value;
+                var rgb = hexToRgb(hex);
+                colorName.innerHTML = getColorName(hex);
+                colorRGB.innerHTML = rgb;
+                colorHex.innerHTML = hex;
                 if (!fixView || changeView) {
-                    var rgb = hexToRgb(colorPicker.value);
                     var rgba = rgb.replace("rgb", "rgba").replace(")", 
                         "," + alpha + ")");
-                    console.log(rgba);
                     viewer.style.backgroundColor = rgba;
                     colorInput.placeholder = rgba;
                 }
