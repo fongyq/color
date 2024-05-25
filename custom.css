@@ -49,7 +49,7 @@ h3 {
 .box-container {
     display: flex;
     width: 100%;
-    margin: 20px auto;
+    margin: 15px auto;
     /* padding: 20px 0 20px 0; */
 }
 .box {
