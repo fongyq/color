@@ -117,6 +117,9 @@
 
             function setColor(event) {
                 var color = "#000000";
+                if (colorInput.value.length > 0) {
+                    fixView = true;
+                }
                 if (colorInput.value.startsWith('rgb')) {
                     color = rgbToHex(colorInput.value);
                 } else if (colorInput.value.startsWith('#')) {
