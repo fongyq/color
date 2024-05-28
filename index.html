@@ -175,9 +175,8 @@
             }
 
             function clearInput(e) {
-                if (!fixView) {
-                    colorInput.value = "";
-                }
+                colorInput.value = "";
+                clickColor(true);
             }
 
             clipboard.on('success', function(event) {
