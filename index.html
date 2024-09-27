@@ -119,6 +119,8 @@
                 var color = "#000000";
                 if (colorInput.value.length > 0) {
                     fixView = true;
+                } else {
+                    fixView = false;
                 }
                 if (colorInput.value.startsWith('rgb')) {
                     color = rgbToHex(colorInput.value);
